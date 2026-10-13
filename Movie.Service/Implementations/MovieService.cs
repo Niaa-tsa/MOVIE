@@ -49,7 +49,8 @@ namespace Movie.Service.Implementations
 
 			return new MovieDTO
 			{
-				Title = movie.Title,
+                Id = movie.Id,
+                Title = movie.Title,
 				ReleaseYear = movie.ReleaseYear,
 				StudioName = movie.Studio.Name,
 			};
@@ -130,8 +131,6 @@ namespace Movie.Service.Implementations
 
 
 			await _movieRepository.UpdateMovieAsync(id, movie);  // delete studio
-			await _movieRepository.UpdateMovieAsync(id, movie);  // delete studiodetails
-
 
 			await _unitOfWork.SaveChangesAsync();
 		}
@@ -220,7 +219,40 @@ namespace Movie.Service.Implementations
 			};
 
 		}
-	}
+        public async Task<UpdateMovieDTO> GetMovieForUpdateAsync(int id)
+        {
+            var movie = await _movieRepository.GetMovieByIdAsync(id);
+            if (movie == null)
+                throw new ArgumentException("Movie not found.", nameof(id));
+
+            return new UpdateMovieDTO
+            {
+                Title = movie.Title,
+                ReleaseYear = movie.ReleaseYear,
+                StudioId = movie.StudioId
+            };
+        }
+
+        public async Task<ICollection<MovieDTO>> FilterMoviesAsync(
+            MovieFilterDTO filter, CancellationToken cancellationToken = default)
+        {
+            if (filter.FromYear < 0 || filter.ToYear < 0)
+                throw new ArgumentException("Year cannot be negative.");
+            if (filter.FromYear > filter.ToYear)
+                throw new ArgumentException("'From year' cannot be greater than 'To year'.");
+
+            var movies = await _movieRepository.SearchMoviesAsync(
+                filter.Title, filter.FromYear, filter.ToYear, filter.StudioName, cancellationToken);
+
+            return movies.Select(m => new MovieDTO
+            {
+                Id = m.Id,
+                Title = m.Title,
+                ReleaseYear = m.ReleaseYear,
+                StudioName = m.Studio.Name
+            }).ToList();
+        }
+    }
 }
 
 

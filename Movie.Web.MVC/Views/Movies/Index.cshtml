@@ -1,33 +1,64 @@
-﻿
+﻿@model Movie.Web.MVC.Models.MovieIndexViewModel
 
+<div class="movies-container">
+    <h2 class="movies-title">Movies</h2>
 
-@model ICollection<Movie.Domain.DTOs.MovieDTO>
+    <form method="get" asp-action="Index" class="search-form">
+        <div class="search-field">
+            <label asp-for="Filter.Title">Title</label>
+            <input asp-for="Filter.Title" placeholder="Search by title" />
+        </div>
+        <div class="search-field">
+            <label asp-for="Filter.FromYear">From year</label>
+            <input asp-for="Filter.FromYear" type="number" />
+        </div>
+        <div class="search-field">
+            <label asp-for="Filter.ToYear">To year</label>
+            <input asp-for="Filter.ToYear" type="number" />
+        </div>
+        <div class="search-field">
+            <label asp-for="Filter.StudioName">Studio</label>
+            <input asp-for="Filter.StudioName" placeholder="Studio name" />
+        </div>
 
+        <button type="submit" class="search-btn">Search</button>
 
+        @if (!Model.Filter.IsEmpty)
+        {
+            <a asp-action="Index" class="cancel-btn">Reset</a>
+        }
+    </form>
 
+    @if (!string.IsNullOrEmpty(Model.Error))
+    {
+        <span class="validation-message">@Model.Error</span>
+    }
 
-
-    <table>
+    <table class="movies-table">
         <thead>
             <tr>
                 <th>Title</th>
-                <th>Release Date</th>
+                <th>Release Year</th>
                 <th>Studio Name</th>
-            </tr>   
-            
+                <th></th>
+            </tr>
         </thead>
         <tbody>
-            @foreach (var movie in Model)
+            @foreach (var movie in Model.Movies)
             {
                 <tr>
                     <td>@movie.Title</td>
                     <td>@movie.ReleaseYear</td>
                     <td>@movie.StudioName</td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@movie.Id" class="details-btn">Edit</a>
+                    </td>
                 </tr>
             }
-            </tbody>
+            @if (!Model.Movies.Any())
+            {
+                <tr><td colspan="4">No movies found.</td></tr>
+            }
+        </tbody>
     </table>
-
-  
-
-
+</div>

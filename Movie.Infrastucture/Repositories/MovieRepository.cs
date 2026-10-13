@@ -50,8 +50,13 @@ namespace Movie.Infrastucture.Repositories
 			{
 				throw new ArgumentException("Movie not found");
 			}
-
-			movieExists.Title = movie.Title;
+            var studioExists = await _movieDbContext.Studios
+        .AnyAsync(s => s.Id == movie.StudioId);
+            if (!studioExists)
+            {
+                throw new ArgumentException("Studio not found");
+            }
+            movieExists.Title = movie.Title;
 			movieExists.ReleaseYear = movie.ReleaseYear;
 			movieExists.StudioId = movie.StudioId;
 
@@ -244,6 +249,30 @@ namespace Movie.Infrastucture.Repositories
 
 		}
 
+        public async Task<ICollection<Domain.Entities.Movie>> SearchMoviesAsync(
+            string? title, int? fromYear, int? toYear, string? studioName,
+            CancellationToken cancellationToken = default)
+        {
+            var query = _movieDbContext.Movies
+                .Include(m => m.Studio)
+                .AsQueryable();
 
-	}
+            if (!string.IsNullOrWhiteSpace(title))
+                query = query.Where(m => m.Title.Contains(title));
+
+            if (fromYear.HasValue)
+                query = query.Where(m => m.ReleaseYear >= fromYear.Value);
+
+            if (toYear.HasValue)
+                query = query.Where(m => m.ReleaseYear <= toYear.Value);
+
+            if (!string.IsNullOrWhiteSpace(studioName))
+                query = query.Where(m => m.Studio.Name.Contains(studioName));
+
+            return await query
+                .OrderByDescending(m => m.ReleaseYear)
+                .ThenBy(m => m.Title)
+                .ToListAsync(cancellationToken);
+        }
+    }
 }

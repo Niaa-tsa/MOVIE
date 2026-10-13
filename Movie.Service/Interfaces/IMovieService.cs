@@ -21,6 +21,9 @@ namespace Movie.Service.Interfaces
 			int maximumActorCount);
 		Task<ICollection<SerachMovieDTO>> SearchMoviesByStudioAsync(
 			int year, string studioName, int minimumActorCount);
-		
-		}
+        Task<UpdateMovieDTO> GetMovieForUpdateAsync(int id);
+        Task<ICollection<MovieDTO>> FilterMoviesAsync(
+            MovieFilterDTO filter, CancellationToken cancellationToken = default);
+
+    }
 }

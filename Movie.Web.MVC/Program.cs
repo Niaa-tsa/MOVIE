@@ -3,52 +3,43 @@ using Movie.Infrastucture.Data;
 using Movie.Infrastucture.Repositories;
 using Movie.Service.Implementations;
 using Movie.Service.Interfaces;
+
 namespace Movie.Web.MVC
 {
-	public class Program
-	{
-		public static void Main(string[] args)
-		{
-			var builder = WebApplication.CreateBuilder(args);
+    public class Program
+    {
+        public static void Main(string[] args)
+        {
+            var builder = WebApplication.CreateBuilder(args);
 
-			// Add services to the container.
-			builder.Services.AddControllersWithViews();
+            builder.Services.AddControllersWithViews();
 
+            builder.Services.AddDbContext<MovieDbContext>();
+            builder.Services.AddScoped<IMovieRepository, MovieRepository>();
+            builder.Services.AddScoped<IMovieService, MovieService>();
+            builder.Services.AddScoped<IActorRepository, ActorRepository>();
+            builder.Services.AddScoped<IActorService, ActorService>();
+            builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
+            var app = builder.Build();
 
-			builder.Services.AddScoped<IMovieRepository, MovieRepository>();
-			builder.Services.AddDbContext<MovieDbContext>();
-			builder.Services.AddScoped<IMovieService, MovieService>();
-			builder.Services.AddScoped<IActorRepository, ActorRepository>();
-			builder.Services.AddScoped<IActorService, ActorService>();
-			builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+            if (!app.Environment.IsDevelopment())
+            {
+                app.UseExceptionHandler("/Home/Error");
+                app.UseHsts();
+            }
 
+            app.UseHttpsRedirection();
+            app.UseRouting();
+            app.UseAuthorization();
+            app.MapStaticAssets();
 
+            app.MapControllerRoute(
+                name: "default",
+                pattern: "{controller=Movies}/{action=Index}/{id?}")
+                .WithStaticAssets();
 
-
-			var app = builder.Build();
-
-			// Configure the HTTP request pipeline.
-			if (!app.Environment.IsDevelopment())
-			{
-				app.UseExceptionHandler("/Home/Error");
-				// The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
-				app.UseHsts();
-			}
-
-			app.UseHttpsRedirection();
-			app.UseRouting();
-
-			app.UseAuthorization();
-
-			app.MapStaticAssets();
-			app.MapControllerRoute(
-				name: "default",
-				pattern: "{controller=Home}/{action=Index}/{id?}")
-				.WithStaticAssets();
-			
-
-			app.Run();
-		}
-	}
+            app.Run();
+        }
+    }
 }

@@ -45,11 +45,9 @@ namespace Movie.Infrastucture.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("FirstName")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("LastName")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
@@ -66,7 +64,6 @@ namespace Movie.Infrastucture.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Name")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
@@ -221,8 +218,7 @@ namespace Movie.Infrastucture.Migrations
                 {
                     b.Navigation("Movies");
 
-                    b.Navigation("StudioDetails")
-                        .IsRequired();
+                    b.Navigation("StudioDetails");
                 });
 #pragma warning restore 612, 618
         }

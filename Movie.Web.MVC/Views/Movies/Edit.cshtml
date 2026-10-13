@@ -1,0 +1,35 @@
+﻿@model Movie.Domain.DTOs.UpdateMovieDTO
+
+<div class="create-container">
+    <div class="create-card">
+        <h2 class="create-title">Edit movie</h2>
+        <p class="create-subtitle">Update the movie information</p>
+
+        <form asp-action="Edit" asp-route-id="@ViewData["MovieId"]" method="post">
+            <div asp-validation-summary="ModelOnly" class="validation-message"></div>
+
+            <div class="form-group">
+                <label asp-for="Title"></label>
+                <input asp-for="Title" class="form-control" />
+                <span asp-validation-for="Title" class="validation-message"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="ReleaseYear"></label>
+                <input asp-for="ReleaseYear" type="number" class="form-control" />
+                <span asp-validation-for="ReleaseYear" class="validation-message"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="StudioId"></label>
+                <input asp-for="StudioId" type="number" class="form-control" />
+                <span asp-validation-for="StudioId" class="validation-message"></span>
+            </div>
+
+            <div class="form-actions">
+                <a asp-action="Index" class="cancel-btn">Cancel</a>
+                <button type="submit" class="create-btn">Save</button>
+            </div>
+        </form>
+    </div>
+</div>

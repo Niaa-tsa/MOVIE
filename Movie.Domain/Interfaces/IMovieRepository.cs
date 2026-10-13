@@ -32,6 +32,8 @@ namespace Movie.Domain.Interfaces
 			string studioName,
 			int minimumActorCount);
 
-
-	}
+        Task<ICollection<Domain.Entities.Movie>> SearchMoviesAsync(
+    string? title, int? fromYear, int? toYear, string? studioName,
+    CancellationToken cancellationToken = default);
+    }
 }
