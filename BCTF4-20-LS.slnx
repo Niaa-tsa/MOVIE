@@ -1,44 +1,4 @@
 <Solution>
-  <Folder Name="/AdoNetProject/">
-    <Project Path="UniversityApplication/UniversityApplication.csproj" Id="d2cece5f-afa1-4f8d-835d-e2dbd13b2587" />
-    <Project Path="UniversityDomain/UniversityDomain.csproj" Id="65e5714f-d1a9-4c5b-b200-3aa4b9f1612d" />
-    <Project Path="UniversityInfrastucture/UniversityInfrastucture.csproj" Id="89d0ab7e-e925-40e4-8873-475a89d7233b" />
-    <Project Path="UniversityPresentation/UniversityPresentation.csproj" Id="a6075e56-9977-4368-88e9-dd6a7b03339c" />
-  </Folder>
-  <Folder Name="/bfrWEB/">
-    <Project Path="lecture1/lecture1.csproj" />
-    <Project Path="Lecture10/Lecture10.csproj" Id="2fc8f83e-fff7-4c89-8e2b-6efcee1a6598" />
-    <Project Path="Lecture11/Lecture11.csproj" Id="8d00aab9-557d-4189-a904-7ac4d95b7150" />
-    <Project Path="Lecture12/Lecture12.csproj" Id="8e4622e5-3483-44fe-9bd7-294dfcf12aef" />
-    <Project Path="Lecture13/Lecture13.csproj" Id="01a1c6e7-974b-48e1-893b-0da4dc9289a9" />
-    <Project Path="Lecture14/Lecture14.csproj" Id="dc8e9365-e73c-4047-98d7-670e10190cfd" />
-    <Project Path="Lecture15/Lecture15.csproj" Id="138b0661-b5eb-41d1-a09a-df044c5aa9df" />
-    <Project Path="Lecture16/Lecture16.csproj" Id="c0cc4743-ec65-4dc1-9df2-5c9291ab1d74" />
-    <Project Path="Lecture17/Lecture17.csproj" Id="08fda167-4c8f-4c14-bd76-398c7f189062" />
-    <Project Path="lecture2/lecture2.csproj" Id="429c6066-2e47-4ddb-8396-d153f9e1f624" />
-    <Project Path="Lecture21/Lecture21.csproj" Id="5a35d9f4-ea9c-45a1-94f2-f3e95ceaf4dd" />
-    <Project Path="Lecture22/Lecture22.csproj" Id="e8d6b3f3-ad97-414f-87bd-20239d5e47f8" />
-    <Project Path="lecture3/lecture3.csproj" Id="dd648a57-9a9a-4218-ba24-6b9f0ddbbdec" />
-    <Project Path="lecture4/lecture4.csproj" Id="b7be7590-5f5e-4061-b4a8-85c8ba004e96" />
-    <Project Path="lecture5/lecture5.csproj" Id="ff9abcba-7424-4095-9269-4b6df783e857" />
-    <Project Path="lecture6/lecture6.csproj" Id="c36630d2-a182-46e7-ac50-fc0fef97ce3f" />
-    <Project Path="lecture7/lecture7.csproj" Id="711bf307-8cd5-42c3-b744-69fd90acca72" />
-    <Project Path="lecture8/lecture8.csproj" Id="7f3c9a9f-b44e-4b7b-aa91-f890522c7dd1" />
-    <Project Path="Lecture9/Lecture9.csproj" Id="813743f8-aff5-4906-a457-214011d80644" />
-    <Project Path="recursion/recursion.csproj" Id="0a29380f-a2f4-4320-9a1a-ece603fb353b" />
-  </Folder>
-  <Folder Name="/bfrWEB/Project/">
-    <Project Path="Application/Application.csproj" Id="049eaf14-73e0-4ca5-8eb6-67f41c6949bb" />
-    <Project Path="Core/Core.csproj" Id="db4a3a6e-8e3c-42fa-8176-b34ea4cb111f" />
-    <Project Path="Repository/Repository.csproj" Id="9dee12fe-4862-461c-8859-534b86f1b31c" />
-    <Project Path="UI/UI.csproj" Id="eef29011-133e-4446-aacf-fd14a9ba38f6" />
-  </Folder>
-  <Folder Name="/bfrWEB/Registration/">
-    <Project Path="UnivercityApplication/UnivercityApplication.csproj" Id="59fc0758-17be-4b83-9e5c-4280dab6a0ec" />
-    <Project Path="UnivercityCore/UnivercityCore.csproj" Id="4b8a6ce9-52a5-4031-8a63-32933bcd2041" />
-    <Project Path="UnivercityRepository/UnivercityRepository.csproj" Id="8c193d3c-295d-4ae3-83bf-4cdbdebe22cf" />
-    <Project Path="UnivercityUI/UnivercityUI.csproj" Id="7a1f5f92-d98b-49c4-aa08-0a3f77a4ec23" />
-  </Folder>
   <Folder Name="/Movies/">
     <Project Path="Movie.Domain/Movie.Domain.csproj" Id="a2a1668b-f055-4bd9-991b-e76dfbc1875f" />
     <Project Path="Movie.Infrastucture/Movie.Infrastucture.csproj" Id="e85bd692-3130-4b44-b9c4-91225cd05291" />
@@ -47,12 +7,6 @@
     <Project Path="Movie.UI/Movie.UI.csproj" Id="bc8a5b27-b4e5-4c2d-bb41-6623a948915c" />
     <Project Path="Movie.Web.MVC/Movie.Web.MVC.csproj" Id="d24c1bbf-9530-475d-a6b1-992a089971f9" />
     <Project Path="Movie.Web1/Movie.Web1.csproj" Id="a90742ea-29c3-45f2-bd24-cd3a62f5877f" />
-  </Folder>
-  <Folder Name="/SchoolApp/">
-    <Project Path="Scholl.Domain/School.Domain.csproj" Id="e0d4ae66-530c-41ac-956c-6f424b143bff" />
-    <Project Path="School.Application/School.Application.csproj" Id="61bbd55a-5896-4ca6-9427-5b9d84254218" />
-    <Project Path="School.Infrastucture/School.Infrastucture.csproj" Id="13b6b96f-301e-4b27-bda3-871184f24b70" />
-    <Project Path="School.Web/School.Web.csproj" Id="deaf9ca8-9a18-4bcc-9097-a24d2b0b89bf" />
   </Folder>
   <Project Path="1ADONet/1ADONet.csproj" Id="fb5160bd-b148-48a3-af34-fb7524feb610" />
   <Project Path="1EFcore/1EFcore.csproj" Id="de5b7bba-3fd1-4a44-b3ee-eecaa989d8c0" />
